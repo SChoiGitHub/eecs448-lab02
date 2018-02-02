@@ -68,15 +68,11 @@ std::vector<T> LinkedList<T>::toVector() const
 template <typename T>
 void LinkedList<T>::addBack(T value)
 {
-	Node<T>* temp = nullptr;
-
-	if(isEmpty())
-	{
+	if(isEmpty()){
 		m_front = new Node<T>(value);	
-	}
-	else
-	{
+	}else{
 		temp = m_front;
+		Node<T>* temp = nullptr;
 		while(temp->getNext() != nullptr)
 		{
 			temp = temp->getNext();
