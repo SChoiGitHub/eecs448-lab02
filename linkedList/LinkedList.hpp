@@ -37,20 +37,24 @@ bool LinkedList<T>::search(T value) const
 {
 	Node<T>* temp = m_front; //First, look at the front
 	
-	if(m_size == 0){
+	if(temp == nullptr){
 		//Empty lists have nothing to search for.
 		return false;
+	}else if(temp->getValue() == value){
+		//The first value is the one we are looking for.
+		return true;
 	}
 	
 	while(temp->getNext() != nullptr){
+		//If there are still other elements, go to the next.
+		temp = temp->getNext();
+		
 		//If you can find the element, return true.
 		if(temp->getValue() == value){
 			return true;
 		}
-		//If there are still other elements, go to the next.
-		temp = temp->getNext();
+
 	}
-	
 	//return false, value not found;
 	return false;
 }
