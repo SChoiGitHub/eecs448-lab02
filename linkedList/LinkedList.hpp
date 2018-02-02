@@ -71,8 +71,7 @@ void LinkedList<T>::addBack(T value)
 	if(isEmpty()){
 		m_front = new Node<T>(value);	
 	}else{
-		temp = m_front;
-		Node<T>* temp = nullptr;
+		Node<T>* temp = m_front;
 		while(temp->getNext() != nullptr)
 		{
 			temp = temp->getNext();
