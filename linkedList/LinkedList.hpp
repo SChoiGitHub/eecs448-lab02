@@ -108,12 +108,17 @@ bool LinkedList<T>::removeBack()
 	if(m_front == nullptr){
 		//We found no m_front. There is nothing to delete.
 		return false;
+	}else if(m_size == 1){
+		//m_front is the only element
+		delete m_front;
+		m_front = nullptr;
+		m_size--;
 	}
 	
 	Node<T>* temp = m_front; //First, look at the front
 	
 	//Get to the second-to-last node
-	for(int x = 0; x < m_size-1; x++){
+	for(int x = 0; x < m_size-2; x++){
 		temp = temp->getNext();
 	}
 	
