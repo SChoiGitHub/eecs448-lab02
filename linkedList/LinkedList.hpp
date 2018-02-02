@@ -36,6 +36,12 @@ template <typename T>
 bool LinkedList<T>::search(T value) const
 {
 	Node<T>* temp = m_front; //First, look at the front
+	
+	if(m_size == 0){
+		//Empty lists have nothing to search for.
+		return false;
+	}
+	
 	while(temp->getNext() != nullptr){
 		//If you can find the element, return true.
 		if(temp->getValue() == value){
