@@ -102,12 +102,17 @@ bool LinkedList<T>::removeBack()
 	}
 	
 	Node<T>* temp = m_front; //First, look at the front
-	while(temp->getNext() != nullptr){
-		//If there are still other elements, go to the next.
+	
+	//Get to the second-to-last node
+	for(int x = 0; x < m_size-1; x++){
 		temp = temp->getNext();
 	}
-	//temp should be the last element now.
-	delete temp;
+	
+	//Delete the last node
+	delete temp->getNext();
+	//Make the new last node point to a nullptr
+	temp->setNext(nullptr);
+	
 	//decrement the size.
 	m_size--;
 	//return true;
