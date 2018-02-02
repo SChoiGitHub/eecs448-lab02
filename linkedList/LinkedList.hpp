@@ -29,10 +29,7 @@ bool LinkedList<T>::isEmpty() const
 template <typename T>
 int LinkedList<T>::size() const
 {
-	/** TODO 
-		Fix this method
-	*/
-	return(0);
+	return(m_size);
 }
 
 template <typename T>
@@ -107,7 +104,7 @@ bool LinkedList<T>::removeBack()
 	Node<T>* temp = m_front; //First, look at the front
 	while(temp->getNext() != nullptr){
 		//If there are still other elements, go to the next.
-		temp = temp.getNext();
+		temp = temp->getNext();
 	}
 	//temp should be the last element now.
 	delete temp;
