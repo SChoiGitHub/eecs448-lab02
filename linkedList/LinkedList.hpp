@@ -113,7 +113,7 @@ bool LinkedList<T>::removeBack()
 	Node<T>* temp = m_front; //First, look at the front
 
 	//Get to the second-to-last node
-	for(int x = 0; x < m_size-1; x++){
+	for(int x = 0; x < m_size-2; x++){
 		temp = temp->getNext();
 	}
 	
