@@ -29,20 +29,34 @@ bool LinkedList<T>::isEmpty() const
 template <typename T>
 int LinkedList<T>::size() const
 {
-	return( m_size );
+	return(m_size);
 }
 
 template <typename T>
 bool LinkedList<T>::search(T value) const
 {
-	Node<T>* temp = m_front;
-	bool isFound = false;
+	Node<T>* temp = m_front; //First, look at the front
+	
+	if(temp == nullptr){
+		//Empty lists have nothing to search for.
+		return false;
+	}else if(temp->getValue() == value){
+		//The first value is the one we are looking for.
+		return true;
+	}
+	
+	while(temp->getNext() != nullptr){
+		//If there are still other elements, go to the next.
+		temp = temp->getNext();
+		
+		//If you can find the element, return true.
+		if(temp->getValue() == value){
+			return true;
+		}
 
-	/** TODO 
-		Fix this method
-	*/
-
-	return(isFound);
+	}
+	//return false, value not found;
+	return false;
 }
 
 template <typename T>
@@ -64,15 +78,10 @@ std::vector<T> LinkedList<T>::toVector() const
 template <typename T>
 void LinkedList<T>::addBack(T value)
 {
-	Node<T>* temp = nullptr;
-
-	if(isEmpty())
-	{
+	if(isEmpty()){
 		m_front = new Node<T>(value);	
-	}
-	else
-	{
-		temp = m_front;
+	}else{
+		Node<T>* temp = m_front;
 		while(temp->getNext() != nullptr)
 		{
 			temp = temp->getNext();
@@ -102,17 +111,21 @@ bool LinkedList<T>::removeBack()
 	}
 	
 	Node<T>* temp = m_front; //First, look at the front
-	while(temp->getNext() != nullptr){
-		//If there are still other elements, go to the next.
+
+	//Get to the second-to-last node
+	for(int x = 0; x < m_size-1; x++){
 		temp = temp->getNext();
 	}
-	//temp should be the last element now.
-	delete temp;
+	
+	//Delete the last node
+	delete temp->getNext();
+	//Make the new last node point to a nullptr
+	temp->setNext(nullptr);
+	
 	//decrement the size.
 	m_size--;
 	//return true;
 	return true;
-
 }	
 
 template <typename T>
